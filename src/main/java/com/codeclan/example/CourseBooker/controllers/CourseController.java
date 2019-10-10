@@ -19,11 +19,13 @@ public class CourseController {
 
     @GetMapping(value = "starRating/{starRating}")
     public List<Course> getCourseByStarRating(@PathVariable int starRating){
-        return courseRepository.getCourseByStarRating(starRating);
+        //return courseRepository.getCourseByStarRating(starRating);
+        return courseRepository.findByStarRating(starRating);
     }
 
     @GetMapping(value = "customer/{customerId}")
     public List<Course> getCoursesForCustomer(@PathVariable Long customerId){
-        return courseRepository.getCoursesForCustomer(customerId);
+        //return courseRepository.getCoursesForCustomer(customerId);
+        return courseRepository.findByBookingsCustomerId(customerId);
     }
 }
