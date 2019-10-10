@@ -1,15 +1,14 @@
 package com.codeclan.example.CourseBooker.models;
 
-//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "courses")
-public class Course {
+@Table(name = "customers")
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,23 +20,22 @@ public class Course {
     @Column(name = "town")
     private String town;
 
-    @Column(name = "star_rating")
-    private int starRating;
+    @Column(name = "age")
+    private int age;
 
-//    @JsonIgnoreProperties("course")
+//    @JsonIgnoreProperties("booking")
 //    @ManyToOne
-//    @JoinColumn(name = "course_id", nullable = false)
+//    @JoinColumn(name = "booking_id", nullable = false)
 //    private List<Booking> bookings;
 
-
-    public Course() {
+    public Customer() {
     }
 
-    public Course(String name, String town, int starRating) {
+    public Customer(String name, String town, int age) {
         this.name = name;
         this.town = town;
-        this.starRating = starRating;
-        //this.bookings = new ArrayList<Booking>();
+        this.age = age;
+       // this.bookings = new ArrayList<Booking>();
     }
 
     public Long getId() {
@@ -64,12 +62,12 @@ public class Course {
         this.town = town;
     }
 
-    public int getStarRating() {
-        return starRating;
+    public int getAge() {
+        return age;
     }
 
-    public void setStarRating(int starRating) {
-        this.starRating = starRating;
+    public void setAge(int age) {
+        this.age = age;
     }
 
 //    public List<Booking> getBookings() {

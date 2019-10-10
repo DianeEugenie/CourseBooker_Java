@@ -1,7 +1,9 @@
 package com.codeclan.example.CourseBooker;
 
 import com.codeclan.example.CourseBooker.models.Course;
+import com.codeclan.example.CourseBooker.models.Customer;
 import com.codeclan.example.CourseBooker.repositories.CourseRepository.CourseRepository;
+import com.codeclan.example.CourseBooker.repositories.CustomerRepository.CustomerRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,7 @@ public class CourseBookerApplicationTests {
 	CourseRepository courseRepository;
 
 	@Autowired
-
+	CustomerRepository customerRepository;
 
 	@Test
 	public void contextLoads() {
@@ -31,7 +33,7 @@ public class CourseBookerApplicationTests {
 	@Test
 	public void canSaveCustomer(){
 		Customer customer = new Customer("Billy", "Cerulian City", 30);
-		customerRepository.save(customers);
+		customerRepository.save(customer);
 
 	}
 
