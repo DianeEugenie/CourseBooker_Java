@@ -23,10 +23,9 @@ public class Customer {
     @Column(name = "age")
     private int age;
 
-//    @JsonIgnoreProperties("booking")
-//    @ManyToOne
-//    @JoinColumn(name = "booking_id", nullable = false)
-//    private List<Booking> bookings;
+    @JsonIgnoreProperties("customer")
+    @OneToMany(mappedBy = "customer")
+    private List<Booking> bookings;
 
     public Customer() {
     }
@@ -35,7 +34,7 @@ public class Customer {
         this.name = name;
         this.town = town;
         this.age = age;
-       // this.bookings = new ArrayList<Booking>();
+        this.bookings = new ArrayList<Booking>();
     }
 
     public Long getId() {
@@ -70,11 +69,11 @@ public class Customer {
         this.age = age;
     }
 
-//    public List<Booking> getBookings() {
-//        return bookings;
-//    }
-//
-//    public void setBookings(List<Booking> bookings) {
-//        this.bookings = bookings;
-//    }
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
 }

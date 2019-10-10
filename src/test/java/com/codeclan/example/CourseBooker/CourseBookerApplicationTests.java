@@ -1,7 +1,9 @@
 package com.codeclan.example.CourseBooker;
 
+import com.codeclan.example.CourseBooker.models.Booking;
 import com.codeclan.example.CourseBooker.models.Course;
 import com.codeclan.example.CourseBooker.models.Customer;
+import com.codeclan.example.CourseBooker.repositories.BookingRepository.BookingRepository;
 import com.codeclan.example.CourseBooker.repositories.CourseRepository.CourseRepository;
 import com.codeclan.example.CourseBooker.repositories.CustomerRepository.CustomerRepository;
 import org.junit.Test;
@@ -19,6 +21,9 @@ public class CourseBookerApplicationTests {
 
 	@Autowired
 	CustomerRepository customerRepository;
+
+	@Autowired
+	BookingRepository bookingRepository;
 
 	@Test
 	public void contextLoads() {
@@ -39,6 +44,14 @@ public class CourseBookerApplicationTests {
 
 	@Test
 	public void canSaveBooking(){
+		Customer customer = new Customer("Billy", "Cerulian City", 30);
+		customerRepository.save(customer);
+
+		Course course = new Course("How to catch a pokemon", "Palettown", 2);
+		courseRepository.save(course);
+
+		Booking booking = new Booking("10-10-19", course, customer);
+		bookingRepository.save(booking);
 
 	}
 
