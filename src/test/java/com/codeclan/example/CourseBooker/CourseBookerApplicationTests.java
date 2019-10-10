@@ -65,4 +65,10 @@ public class CourseBookerApplicationTests {
 		assertEquals(2, foundCourses.size());
 	}
 
+	@Test
+	public void canGetAllCustomersForAGivenCourse(){
+		List<Customer> foundCustomers = customerRepository.getCustomersByCourseId(1L);
+		assertEquals(2, foundCustomers.size());
+	}
+
 }
