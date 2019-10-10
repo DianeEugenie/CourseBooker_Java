@@ -12,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CourseBookerApplicationTests {
@@ -29,11 +33,11 @@ public class CourseBookerApplicationTests {
 	public void contextLoads() {
 	}
 
-	@Test
-	public void canSaveCourse(){
-		Course course = new Course("How to catch a pokemon", "Palettown", 2);
-		courseRepository.save(course);
-	}
+//	@Test
+//	public void canSaveCourse(){
+//		Course course = new Course("How to catch a pokemon", "Palettown", 2);
+//		courseRepository.save(course);
+//	}
 
 	@Test
 	public void canSaveCustomer(){
@@ -42,17 +46,23 @@ public class CourseBookerApplicationTests {
 
 	}
 
+//	@Test
+//	public void canSaveBooking(){
+//		Customer customer = new Customer("Billy", "Cerulian City", 30);
+//		customerRepository.save(customer);
+//
+//		Course course = new Course("How to catch a pokemon", "Palettown", 2);
+//		courseRepository.save(course);
+//
+//		Booking booking = new Booking("10-10-19", course, customer);
+//		bookingRepository.save(booking);
+//
+//	}
+
 	@Test
-	public void canSaveBooking(){
-		Customer customer = new Customer("Billy", "Cerulian City", 30);
-		customerRepository.save(customer);
-
-		Course course = new Course("How to catch a pokemon", "Palettown", 2);
-		courseRepository.save(course);
-
-		Booking booking = new Booking("10-10-19", course, customer);
-		bookingRepository.save(booking);
-
+	public void canGetCourseByStarRating(){
+		List<Course> foundCourses = courseRepository.getCourseByStarRating(2);
+		assertEquals(2, foundCourses.size());
 	}
 
 }
