@@ -29,4 +29,24 @@ public class CourseRepositoryImpl implements CourseRepositoryCustom {
         }
         return courses;
     }
+
+    @Transactional
+    public List<Course> getCoursesForCustomer(long customerId) {
+        List<Course> courses = null;
+        Session session = entityManager.unwrap(Session.class);
+
+        try {
+            Criteria cr = session.createCriteria(Course.class);
+            cr.createAlias("bookings", "booking");
+            cr.createAlias("booking.customer", "customer");
+            cr.add(Restrictions.eq("customer.id", customerId));
+
+            courses = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+
+        return courses;
+    }
+
 }
