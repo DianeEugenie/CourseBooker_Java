@@ -102,5 +102,11 @@ public class CourseBookerApplicationTests {
 		assertEquals(0, foundCustomers.size());
 	}
 
+	@Test
+	public void canGetCustomersFromTownForGivenCourse__NoCaps(){
+		List<Customer> foundCustomers = customerRepository.getCustomersByTownForCourse("palettown", 1L);
+		assertEquals(1, foundCustomers.size());
+	}
+
 
 }

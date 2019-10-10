@@ -41,7 +41,7 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
             Criteria cr = session.createCriteria(Customer.class);
             cr.createAlias("bookings", "booking");
             cr.createAlias("booking.course", "courseAlias");
-            cr.add(Restrictions.eq("town", town));
+            cr.add(Restrictions.eq("town", town).ignoreCase());
             cr.add(Restrictions.eq("courseAlias.id", courseId));
 
             customers = cr.list();
@@ -63,7 +63,7 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
             cr.createAlias("bookings", "booking");
             cr.createAlias("booking.course", "courseAlias");
             cr.add(Restrictions.gt("age", age));
-            cr.add(Restrictions.eq("town", town));
+            cr.add(Restrictions.eq("town", town).ignoreCase());
             cr.add(Restrictions.eq("courseAlias.id", courseId));
 
             customers = cr.list();
