@@ -78,4 +78,11 @@ public class CourseBookerApplicationTests {
 
 	}
 
+	@Test
+	public void canGetBookingsByDate(){
+		List<Booking> foundBookings = bookingRepository.getBookingsByDate("10-10-19");
+		assertEquals(2, foundBookings.size());
+	}
+
+
 }
