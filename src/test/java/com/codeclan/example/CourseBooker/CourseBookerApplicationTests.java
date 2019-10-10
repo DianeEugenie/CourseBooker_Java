@@ -90,5 +90,17 @@ public class CourseBookerApplicationTests {
 		assertEquals(1, foundCustomers.size());
 	}
 
+	@Test
+	public void canGetCustomersOverAgeFromTownForGivenCourse(){
+		List<Customer> foundCustomers = customerRepository.getCustomersOverAgeByTownForCourse(25,"Palettown", 1L);
+		assertEquals(1, foundCustomers.size());
+	}
+
+	@Test
+	public void canGetCustomersOverAgeFromTownForGivenCourse__AgeOver40(){
+		List<Customer> foundCustomers = customerRepository.getCustomersOverAgeByTownForCourse(40,"Palettown", 1L);
+		assertEquals(0, foundCustomers.size());
+	}
+
 
 }

@@ -52,4 +52,25 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
         return customers;
 
     }
+
+    @Transactional
+    public List<Customer> getCustomersOverAgeByTownForCourse(int age, String town, Long courseId) {
+        List<Customer> customers = null;
+        Session session = entityManager.unwrap(Session.class);
+
+        try {
+            Criteria cr = session.createCriteria(Customer.class);
+            cr.createAlias("bookings", "booking");
+            cr.createAlias("booking.course", "courseAlias");
+            cr.add(Restrictions.gt("age", age));
+            cr.add(Restrictions.eq("town", town));
+            cr.add(Restrictions.eq("courseAlias.id", courseId));
+
+            customers = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+
+        return customers;
+    }
 }
